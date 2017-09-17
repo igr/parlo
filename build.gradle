@@ -1,0 +1,31 @@
+group 'com.oblac'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        name "CogcompSoftware"
+        url "http://cogcomp.cs.illinois.edu/m2repo/"
+    }
+}
+
+dependencies {
+    compile 'edu.stanford.nlp:stanford-corenlp:3.8.0'
+    compile 'nz.ac.waikato.cms.weka:weka-stable:3.8.1'
+
+    compile 'edu.cmu.lti:ws4j:1.0.1'
+
+    compile 'org.jodd:jodd-core:3.9.1'
+    compile 'org.jodd:jodd-json:3.9.1'
+
+    runtime group: 'edu.stanford.nlp', name: 'stanford-corenlp', version: '3.8.0', classifier: 'models-english'
+
+    // https://github.com/CogComp/cogcomp-nlp/tree/master/pipeline
+    //compile 'edu.illinois.cs.cogcomp:illinois-nlp-pipeline:3.1.20'
+
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.0.0'
+}
