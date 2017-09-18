@@ -10,7 +10,7 @@ public class KeywordsMatchingCalculator {
 		this.wdc = wordDistanceCalculator;
 	}
 
-	public double matcherKeywords(Map<String, Double> sentenceKey, Map<String, Double> questionKeywords) {
+	public double matcherKeywords(Map<String, Boolean> sentenceKey, Map<String, Boolean> questionKeywords) {
 		double count = 0;
 		double sum = 0;
 		for (String word1 : questionKeywords.keySet()) {
@@ -18,7 +18,7 @@ public class KeywordsMatchingCalculator {
 			String maxWord = null;
 			for (String word2 : sentenceKey.keySet()) {
 				double mult = 1.0;
-				if (questionKeywords.get(word1) > 0.0) {
+				if (questionKeywords.get(word1)) {
 					mult = 2.0;
 				}
 				if (!word1.equals(word2)) {

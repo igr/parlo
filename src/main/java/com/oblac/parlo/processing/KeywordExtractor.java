@@ -10,10 +10,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Extract the keywords from the input sentence.
+ */
 public class KeywordExtractor {
 
-	public Map<String, Double> keywordsExtractor(Sentence sentence, boolean isQuestion) {
-		Map<String, Double> keywords = new HashMap<>();
+	public Map<String, Boolean> keywordsExtractor(Sentence sentence, boolean isQuestion) {
+		Map<String, Boolean> keywords = new HashMap<>();
 
 		SemanticGraph dependencies = sentence.semanticGraph();
 		List<IndexedWord> questionNodes = dependencies.getAllNodesByPartOfSpeechPattern("WP|WRB|WDT|WRB|WP\\$");
@@ -25,7 +28,8 @@ public class KeywordExtractor {
 				if (questionNodes.contains(dep)) {
 					answerNodes.add(gov.word());
 				} else if (questionNodes.contains(gov)) {
-					answerNodes.add(dep.word());    // Identify the most important word in the question
+					// identify the most important word in the question
+					answerNodes.add(dep.word());
 				}
 			}
 		}
@@ -37,9 +41,9 @@ public class KeywordExtractor {
 			String lemma = token.lemma();
 			if (!ne.equals("O") || pos.matches("JJ|JJR|JJS|RB|RBR|RBS|NN|NNS|NNP|NNPS|VB|VBD|VBG|VBN|VBP|VBZ|CD") || answerNodes.contains(word)) {
 				if (answerNodes.contains(word)) {
-					keywords.put(lemma, 1.0);
+					keywords.put(lemma, true);
 				} else {
-					keywords.put(lemma, 0.0);
+					keywords.put(lemma, false);
 				}
 			}
 		});

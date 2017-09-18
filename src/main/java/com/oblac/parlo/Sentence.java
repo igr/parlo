@@ -32,7 +32,7 @@ public class Sentence {
 
 	private SentenceType sentenceType;
 	private QuestionType questionType;
-	private Map<String, Double> keywords;
+	private Map<String, Boolean> keywords;
 
 	private Set<String> bagOfWords;
 
@@ -108,7 +108,7 @@ public class Sentence {
 		return questionType;
 	}
 
-	public Map<String, Double> keywords() {
+	public Map<String, Boolean> keywords() {
 		return keywords;
 	}
 
@@ -128,7 +128,7 @@ public class Sentence {
 		return sentenceType == SentenceType.QUESTION;
 	}
 
-	public void keywords(Map<String, Double> keywords) {
+	public void keywords(Map<String, Boolean> keywords) {
 		this.keywords = keywords;
 	}
 }

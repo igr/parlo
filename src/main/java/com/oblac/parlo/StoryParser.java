@@ -54,7 +54,7 @@ public class StoryParser {
 			sentence.questionType(questionType);
 		});
 		story.sentences().forEach(sentence -> {
-			Map<String, Double> keywords = keywordExtractor.keywordsExtractor(sentence, sentence.isQuestion());
+			Map<String, Boolean> keywords = keywordExtractor.keywordsExtractor(sentence, sentence.isQuestion());
 			sentence.keywords(keywords);
 		});
 
