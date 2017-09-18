@@ -43,11 +43,11 @@ public class AnswerFinder {
 
 				// totally non-scientific coefficients used here
 
-				//score += tripletsMatcher.matchStoryTriples(sentenceScore.sentence(), question);
+				score += tripletsMatcher.matchStoryTriples(sentenceScore.sentence(), question);
 
-				//score += 0.4 * bagOfWordsMatcher.matchBagOfWords(sentenceScore.sentence(), question);
+				score += 0.4 * bagOfWordsMatcher.matchBagOfWords(sentenceScore.sentence(), question);
 
-				//score += 2 * keywordsMatcher.match(sentenceScore.sentence(), question);
+				score += 2 * keywordsMatcher.match(sentenceScore.sentence(), question);
 
 				score += 2 * sentenceRanker.rankSentence(sentenceScore.sentence(), question);
 
